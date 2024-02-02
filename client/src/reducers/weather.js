@@ -1,8 +1,7 @@
-// weatherReducer.js
 
 const initialState = {
     weatherData: null,
-    theme: "default", // Set default theme
+    theme: "default", 
   };
   
   const weatherReducer = (state = initialState, action) => {
@@ -11,10 +10,9 @@ const initialState = {
         return {
           ...state,
           weatherData: action.payload,
-          theme: getThemeFromWeather(action.payload), // Update theme based on weather data
+          theme: getThemeFromWeather(action.payload),
         };
       case "FETCH_WEATHER_FAILURE":
-        // Handle failure or set default values
         return {
           ...state,
           weatherData: null,
@@ -25,7 +23,6 @@ const initialState = {
     }
   };
   
-  // Function to determine theme based on weather conditions
   const getThemeFromWeather = (weatherData) => {
     if (!weatherData) {
       return "default";

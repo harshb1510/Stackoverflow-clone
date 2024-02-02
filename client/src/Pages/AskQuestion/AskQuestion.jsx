@@ -13,24 +13,38 @@ const AskQuestion = () => {
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (User) {
       if (questionTitle && questionBody && questionTags) {
-        dispatch(
-          askQuestion(
-            {
-              questionTitle,
-              questionBody,
-              questionTags,
-              userPosted: User.result.name,
-            },
-            navigate
-          )
-        );
-      } else alert("Please enter all the fields");
-    } else alert("Login to ask question");
+        try {
+          await dispatch(
+            askQuestion(
+              {
+                questionTitle,
+                questionBody,
+                questionTags,
+                userPosted: User.result.name,
+                userPostedId: User.result._id,
+              },
+              navigate
+            )
+          );
+        } catch (error) {
+          if (error.response && error.response.status === 403) {
+            alert("You have reached the maximum limit of questions for today.");
+          } else {
+            console.log(error);
+            alert("An error occurred while posting the question");
+          }
+        }
+      } else {
+        alert("Please enter all the fields");
+      }
+    } else {
+      alert("Login to ask a question");
+    }
   };
 
   const handleEnter = (e) => {

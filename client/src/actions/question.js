@@ -8,6 +8,7 @@ export const askQuestion = (questionData, navigate) => async (dispatch) => {
     navigate("/");
   } catch (error) {
     console.log(error);
+    throw error; // Re-throw the error to handle it in the component
   }
 };
 

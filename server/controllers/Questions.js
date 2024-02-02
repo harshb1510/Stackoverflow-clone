@@ -1,11 +1,41 @@
 import Questions from "../models/Questions.js";
 import mongoose from "mongoose";
+import User from "../models/auth.js";
 
 export const AskQuestion = async (req, res) => {
   const postQuestionData = req.body;
-  const userId = req.userId;
-  const postQuestion = new Questions({ ...postQuestionData, userId });
+  const userId = req.body.userPostedId;
   try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json("User not found");
+    }
+   const userSubscriptionPlan = user.plan; 
+
+    let allowedNumberOfQuestions;
+    if (userSubscriptionPlan === "free") {
+      allowedNumberOfQuestions = 1;
+    } else if (userSubscriptionPlan === "silver") {
+      allowedNumberOfQuestions = 5;
+    } else if (userSubscriptionPlan === "gold") {
+      allowedNumberOfQuestions = Infinity;
+    } else {
+      return res.status(400).json("Invalid subscription plan");
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const userQuestionsCount = await Questions.countDocuments({
+      userId: userId,
+      askedOn: { $gte: today },
+    });
+
+    if (userQuestionsCount >= allowedNumberOfQuestions) {
+      return res.status(403).json("You have reached the maximum limit of questions for today.");
+    }
+
+    const postQuestion = new Questions({ ...postQuestionData, userId });
     await postQuestion.save();
     res.status(200).json("Posted a question successfully");
   } catch (error) {
@@ -13,6 +43,7 @@ export const AskQuestion = async (req, res) => {
     res.status(409).json("Couldn't post a new question");
   }
 };
+
 
 export const getAllQuestions = async (req, res) => {
   try {

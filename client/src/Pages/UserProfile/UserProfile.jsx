@@ -17,6 +17,7 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
   const currentProfile = users.filter((user) => user._id === id)[0];
   const currentUser = useSelector((state) => state.currentUserReducer);
   const [Switch, setSwitch] = useState(false);
+  console.log(currentProfile)
 
   return (
     <div className="home-container-1">
@@ -36,6 +37,8 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
               </Avatar>
               <div className="user-name">
                 <h1>{currentProfile?.name}</h1>
+                <span>{currentProfile?.plan} plan</span> 
+                 
                 <p>
                   <FontAwesomeIcon icon={faBirthdayCake} /> Joined{" "}
                   {moment(currentProfile?.joinedOn).fromNow()}
