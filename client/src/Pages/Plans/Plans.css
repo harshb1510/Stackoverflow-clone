@@ -88,6 +88,17 @@
     font-weight: bold;
     font-size: .85rem;
 }
+.badge-2 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: black;
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: .85rem;
+}
 .item ul {
     padding: 20px 0px;
     flex: 1;

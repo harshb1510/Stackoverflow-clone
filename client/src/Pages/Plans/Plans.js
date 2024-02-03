@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Plans.css";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Plans = () => {
 const user  = JSON.parse(localStorage.getItem('Profile'));
 const id = user?.result._id;
+const userState = useSelector((state)=>state.currentUserReducer.result);
+const [plan,setPlan] = useState('');
 
 useEffect(() => {
         const loadRazorpayScript = async () => {
@@ -16,6 +19,7 @@ useEffect(() => {
         };
     
         loadRazorpayScript();
+        setPlan(userState.plan)
 }, []);
 
 const initPayment = (data) => {
@@ -86,10 +90,7 @@ const initPayment = (data) => {
         <p>Default</p>
       </div>
       <div className="item color item2">
-        <div className="con-img">
-          <img src="2-1.png" alt="" />
-        </div>
-        <span className="badge">Popular</span>
+        <span className="badge">{plan === 'gold' ? 'Current Plan' : 'Upgrade to Gold'}</span>
         <header>
           <h3>Gold</h3>
           <p>
@@ -113,9 +114,7 @@ const initPayment = (data) => {
         <button className="border" onClick={handleGoldPlan}>Choose Plan</button>
       </div>
       <div className="item item3">
-        <div className="con-img">
-          <img src="3-1.png" alt="" />
-        </div>
+      <span className="badge-2">{plan === 'silver' ? 'Current Plan' : 'Upgrade to Silver'}</span>
         <header>
           <h3>Silver</h3>
           <p>
