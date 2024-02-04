@@ -13,6 +13,7 @@ export const getAllUsers = async (req, res) => {
         tags: user.tags,
         plan: user.plan,
         joinedOn: user.joinedOn,
+        isAuthenticated:user.isAuthenticated
       });
     });
     res.status(200).json(allUserDetails);

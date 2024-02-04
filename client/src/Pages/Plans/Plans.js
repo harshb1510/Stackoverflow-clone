@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 
 const Plans = () => {
 const user  = JSON.parse(localStorage.getItem('Profile'));
-const id = user?.result._id;
-const userState = useSelector((state)=>state.currentUserReducer.result);
+const id = user?.result?._id;
+const userState = useSelector((state)=>state?.currentUserReducer?.result);
 const [plan,setPlan] = useState('');
 
 useEffect(() => {
@@ -19,8 +19,8 @@ useEffect(() => {
         };
     
         loadRazorpayScript();
-        setPlan(userState.plan)
-}, []);
+        setPlan(userState?.plan)
+}, [setPlan,userState]);
 
 const initPayment = (data) => {
   const options = {

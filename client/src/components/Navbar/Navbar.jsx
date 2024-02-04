@@ -12,7 +12,7 @@ import bars from "../../assets/bars-solid.svg";
 
 const Navbar = ({ handleSlideIn }) => {
   const dispatch = useDispatch();
-  var User = useSelector((state) => state.currentUserReducer);
+  var User = useSelector((state) => state?.currentUserReducer);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -25,12 +25,18 @@ const Navbar = ({ handleSlideIn }) => {
     const token = User?.token;
     if (token) {
       const decodedToken = decode(token);
-      if (decodedToken.exp * 1000 < new Date().getTime()) {
+      if (decodedToken?.exp * 1000 < new Date().getTime()) {
         handleLogout();
       }
     }
-    dispatch(setCurrentUser(JSON.parse(localStorage.getItem("Profile"))));
-  }, [User?.token, dispatch]);
+    
+    // Retrieve the stored profile once and avoid repeated dispatch calls
+    const storedProfile = JSON.parse(localStorage.getItem("Profile"));
+    
+    dispatch(setCurrentUser(storedProfile));
+  
+  }, []);
+  
 
   return (
     <nav className="main-nav">

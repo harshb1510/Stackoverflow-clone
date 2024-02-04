@@ -1,0 +1,122 @@
+.App{
+    position: relative;
+}
+.chatboticon {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    background-color: #6ec0ed; /* Replace with your preferred color */
+    color: #fff;
+    padding: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    z-index: 999; /* Set a high z-index to ensure it appears on top of other elements */
+  }
+  
+  
+/* Chatbot container */
+.chat-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    /* margin: auto; */
+    border: 1px solid #000000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 350px;
+    margin-left: 1028px;
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 1;
+}
+  
+  /* Message list */
+  .message-list {
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 300px;
+    height: 300px;
+    display: grid;
+    place-items: end;
+  }
+  
+  /* Individual message */
+  .message {
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 4px;
+  }
+  
+  /* User message */
+  .user {
+    background-color: #3498db;
+    color: #fff;
+    text-align: end;
+    border-radius: 30px 30px 10px 30px;
+    max-width: fit-content;
+}
+  
+  /* Assistant message */
+  .assistant {
+    background-color: #2ecc71;
+    color: #fff;
+    align-self: flex-start;
+  }
+  
+  /* Typing indicator */
+  .typing {
+    font-style: italic;
+    color: #aaa;
+  }
+  
+  /* Message input */
+  .message-input {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Input field */
+  .message-input input {
+    flex: 1;
+    padding: 8px;
+    border:1px solid black;
+    border-radius: 4px;
+    outline: none;
+  }
+  
+  /* Input field placeholder */
+  .message-input input::placeholder {
+    color: #aaa;
+  }
+  
+  /* Input field button */
+  .message-input button {
+    padding: 8px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 8px;
+    outline: none;
+  }
+  
+  /* Input field button on hover */
+  .message-input button:hover {
+    background-color: #2980b9;
+  }
+  
+  .messageChatGPT{
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 30px 30px 30px 10px;
+    max-width: fit-content;
+    padding: 10px;
+    margin-right: 105px;
+  } 
+  

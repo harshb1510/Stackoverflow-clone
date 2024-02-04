@@ -7,7 +7,6 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
   const [about, setAbout] = useState(currentUser?.result?.about);
   const [tags, setTags] = useState([]);
   const dispatch = useDispatch();
-  console.log(tags);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (tags[0] === "" || tags.length === 0) {

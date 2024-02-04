@@ -10,6 +10,8 @@ import Tags from "./Pages/Tags/Tags";
 import Users from "./Pages/Users/Users";
 import UserProfile from "./Pages/UserProfile/UserProfile";
 import Plans from "./Pages/Plans/Plans";
+import Verify from './Pages/Verify/Verify'
+import Otp from "./Pages/Verify/Otp"
 
 const AllRoutes = ({ slideIn, handleSlideIn }) => {
   return (
@@ -43,6 +45,14 @@ const AllRoutes = ({ slideIn, handleSlideIn }) => {
       <Route
         path="/Users"
         element={<Users slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        path="/authenticate"
+        element={<Verify />}
+      />
+      <Route
+        path="/verify"
+        element={<Otp />}
       />
       <Route
         path="/Users/:id"
