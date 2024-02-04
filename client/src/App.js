@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, useNavigate, useRoutes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
@@ -12,7 +12,6 @@ import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
 function App() {
   const dispatch = useDispatch();
-
   const theme = useSelector((state) => state.weatherReducer.theme);
   var id = useSelector((state) => state.currentUserReducer?.result?._id);
   const users = useSelector((state) => state.usersReducer);

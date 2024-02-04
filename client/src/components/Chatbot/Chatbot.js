@@ -95,7 +95,7 @@ function Chatbot() {
                 {message.message}
               </div>
             ))}
-            {typing && <div className='messageChatGPT'>ChatGPT is typing...</div>}
+            {typing && <div ></div>}
           </div>
           <div className='message-input'>
             <input
