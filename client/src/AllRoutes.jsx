@@ -51,7 +51,7 @@ const AllRoutes = ({ slideIn, handleSlideIn }) => {
         element={<Verify />}
       />
       <Route
-        path="/verify"
+        path="/verify/:id"
         element={<Otp />}
       />
       <Route

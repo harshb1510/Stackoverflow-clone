@@ -16,10 +16,10 @@ export const generateOtp = async (req, res) => {
         user.otpCode = parseInt(otp)
         user.otpExpiration = expirationTime
         await user.save();
-       
+        const id = user._id;
         // Send Email with OTP
        await sendEmail({email,emailType:"VERIFY",otp});
-       return res.status(200).json('Otp Sent');
+       return res.status(200).json({message:"Otp Sent",id});
     }catch(err){
         console.log(err);
     }

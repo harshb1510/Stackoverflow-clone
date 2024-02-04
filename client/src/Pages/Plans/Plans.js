@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./Plans.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import * as api from "../../api/index";
 
 const Plans = () => {
-const user  = JSON.parse(localStorage.getItem('Profile'));
-const id = user?.result?._id;
-const userState = useSelector((state)=>state?.currentUserReducer?.result);
+var id = useSelector((state) => state.currentUserReducer?.result._id);
+  const users = useSelector((state) => state.usersReducer);
+  const currentProfile = users.filter((user) => user._id === id)[0];
 const [plan,setPlan] = useState('');
 
 useEffect(() => {
@@ -19,8 +20,8 @@ useEffect(() => {
         };
     
         loadRazorpayScript();
-        setPlan(userState?.plan)
-}, [setPlan,userState]);
+        setPlan(currentProfile?.plan)
+}, [setPlan]);
 
 const initPayment = (data) => {
   const options = {
@@ -53,14 +54,14 @@ const initPayment = (data) => {
 
     const handleSilverPlan = async () => {
         try {
-          const response = await axios.post('http://localhost:8080/user/orders',{amount:100})
+          const response = await api.order({amount:100})
           initPayment(response.data);
         } catch (error) {
           
         }
     }
     const handleGoldPlan = async () => {
-      const response = await axios.post('http://localhost:8080/user/orders',{amount:1000})
+      const response = await api.order({amount:1000})
       initPayment(response.data);
     }
   return (

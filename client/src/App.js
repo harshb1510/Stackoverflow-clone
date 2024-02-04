@@ -14,7 +14,7 @@ function App() {
   const dispatch = useDispatch();
 
   const theme = useSelector((state) => state.weatherReducer.theme);
-  var id = useSelector((state) => state.currentUserReducer?.result._id);
+  var id = useSelector((state) => state.currentUserReducer?.result?._id);
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
 
@@ -45,11 +45,16 @@ function App() {
   };
 
   const handleToggleChatbot = async () => {
-    if (currentProfile?.isAuthenticated) {
-      setChatbotOpen((prev) => !prev);
+    if(id){
+      if (currentProfile?.isAuthenticated) {
+        setChatbotOpen((prev) => !prev);
+      }else{
+       alert("Authenticate first");
+       window.location.href="/authenticate"
+      }
     }else{
-     alert("Authenticate first");
-     window.location.href="/authenticate"
+      alert("Please login to access this feature");
+      window.location.href="/auth"
     }
 
   };

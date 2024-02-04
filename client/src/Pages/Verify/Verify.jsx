@@ -19,9 +19,10 @@ const Auth = () => {
     e.preventDefault();
     console.log(email)
     try {
-        const response = await axios.post('http://localhost:8080/user/authenticate',{email});  
+        const response = await axios.post('http://localhost:8080/user/authenticate',{email});
         if(response.status=='200'){
-            navigate('/verify');
+          const id = response.data.id  
+            navigate(`/verify/${id}`);
         }else{
             alert("Invalid email or password")
         }

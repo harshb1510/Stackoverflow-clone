@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8080/",
-  // baseURL:"https://stackoverflow-clone-gl9m.onrender.com/"
+  // baseURL: "http://localhost:8080/",
+  baseURL:"https://stackoverflow-clone-gl9m.onrender.com/"
 });
 
 API.interceptors.request.use((req) => {
@@ -16,6 +16,7 @@ API.interceptors.request.use((req) => {
 
 export const logIn = (authData) => API.post("/user/login", authData);
 export const signUp = (authData) => API.post("/user/signup", authData);
+export const order = (amount)=> API.post("/user/orders",amount)
 
 export const postQuestion = (questionData) =>
   API.post("/questions/Ask", questionData);
@@ -32,8 +33,7 @@ export const deleteAnswer = (id, answerId, noOfAnswers) =>
 export const getAllUsers = () => API.get("/user/getAllUsers");
 export const updateProfile = (id, updateData) =>
   API.patch(`/user/update/${id}`, updateData);
-
-export const verifyPayment=()=>API.get('/payment/verify');
+export const verifyPayment=()=>API.get('//verify');
 
 
   

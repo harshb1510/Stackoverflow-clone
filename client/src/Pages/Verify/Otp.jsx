@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import icon from "../../assets/icon.png";
 import axios from "axios";
 
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
   const [otp, setOtp] = useState();
-  const userId = useSelector((state)=>state?.currentUserReducer?.result?._id)
+  const userId = useParams().id;
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
