@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import icon from "../../assets/icon.png";
 import axios from "axios";
 
 const Auth = () => {
+
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 const weatherService = axios.create({
-  baseURL: 'https://api.openweathermap.org/data/2.5', 
+  baseURL: 'https://api.openweathermap.org/data/2.5',
 });
 
 export const getWeatherByCoordinates = async (latitude, longitude) => { 
@@ -13,7 +13,7 @@ export const getWeatherByCoordinates = async (latitude, longitude) => {
       params: {
         lat: latitude,
         lon: longitude,
-        appid: process.env.Openweather_api_key,
+        appid: "b76cdd4398be3adb793792040ef3b161",
         units: 'metric',
       },
     });

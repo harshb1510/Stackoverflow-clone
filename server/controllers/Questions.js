@@ -47,6 +47,7 @@ export const AskQuestion = async (req, res) => {
 
 export const getAllQuestions = async (req, res) => {
   try {
+    console.log("get all questions")
     const questionList = await Questions.find().sort({ askedOn: -1 });
     res.status(200).json(questionList);
   } catch (error) {

@@ -26,7 +26,7 @@ useEffect(() => {
 
 const initPayment = (data) => {
   const options = {
-    key: process.env.razorpay_keyID,
+    key: "rzp_test_rrpFDSyVYUuEE4",
     amount: data.amount,
     currency: data.currency,
     order_id: data.orderDetails.razorpayOrderId,

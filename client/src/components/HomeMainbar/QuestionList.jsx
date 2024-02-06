@@ -3,7 +3,7 @@ import Questions from "./Questions";
 const QuestionList = ({ questionsList }) => {
   return (
     <>
-      {questionsList.map((question) => (
+      {questionsList?.map((question) => (
         <Questions question={question} key={question._id} />
       ))}
     </>
