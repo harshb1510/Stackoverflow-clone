@@ -2,10 +2,9 @@
 
 import axios from 'axios';
 
-// Replace with your OpenWeatherMap API key
 
 const weatherService = axios.create({
-  baseURL: 'https://api.openweathermap.org/data/2.5',
+  baseURL: 'https://api.openweathermap.org/data/2.5', 
 });
 
 export const getWeatherByCoordinates = async (latitude, longitude) => { 
@@ -14,8 +13,8 @@ export const getWeatherByCoordinates = async (latitude, longitude) => {
       params: {
         lat: latitude,
         lon: longitude,
-        appid: "b76cdd4398be3adb793792040ef3b161",
-        units: 'metric', // Use 'imperial' for Fahrenheit
+        appid: process.env.Openweather_api_key,
+        units: 'metric',
       },
     });
     return response.data;

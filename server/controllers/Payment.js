@@ -5,7 +5,7 @@ export async function verifyPayment(req,res){
     try {
         const {razorpay_order_id,razorpay_payment_id,razorpay_signature}=req.body;
         const sign = razorpay_order_id + "|" + razorpay_payment_id;
-        const expectedSign = crypto.createHmac("sha256", 'f61Os4eHrG2Bk2IIQzqd9TqV').update(sign.toString()).digest("hex");
+        const expectedSign = crypto.createHmac("sha256", process.env.razorpay_key_secret).update(sign.toString()).digest("hex");
         if(razorpay_signature===expectedSign){
            return res.status(200).json({message:"Payment verified Successfull"});
         }else{
@@ -19,8 +19,8 @@ export async function verifyPayment(req,res){
 export async function orders(req,res){
     try{
     const razorpay = new Razorpay({
-        key_id:'rzp_test_rrpFDSyVYUuEE4',
-        key_secret:"f61Os4eHrG2Bk2IIQzqd9TqV"
+        key_id:process.env.razorpay_key_id,
+        key_secret:process.env.razorpay_key_secret,
     }); 
     const order = {
         amount:req.body.amount*100,

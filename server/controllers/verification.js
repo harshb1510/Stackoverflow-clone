@@ -6,7 +6,6 @@ export const generateOtp = async (req, res) => {
     try{
         const email = req.body.email;
         const user = await User.findOne({email});
-        
         if(!user){
             return res.status(401).json('User not found');
         }
@@ -36,7 +35,6 @@ export const verifyOtp  = async (req,res)=>{
         else if(Date.now() > user.otpExpiration){
             return res.status(403).json("OTP Expired")
             }else if(otp != user.otpCode){
-                console.log("Hello");
                 return res.status(403).json("Incorrect OTP")
                 }else{
                 // Reset OTP fields in DB

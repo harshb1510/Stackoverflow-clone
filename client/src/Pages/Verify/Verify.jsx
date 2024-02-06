@@ -5,15 +5,9 @@ import icon from "../../assets/icon.png";
 import axios from "axios";
 
 const Auth = () => {
-  const [isSignup, setIsSignup] = useState(false);
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  const handleSwitch = () => {
-    setIsSignup(!isSignup);
-    setEmail("");
-
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -8,6 +8,7 @@ const Plans = () => {
 var id = useSelector((state) => state.currentUserReducer?.result._id);
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
+  const reducer = useSelector((state)=>console.log(state))
 const [plan,setPlan] = useState('');
 
 useEffect(() => {
@@ -25,7 +26,7 @@ useEffect(() => {
 
 const initPayment = (data) => {
   const options = {
-    key: "rzp_test_rrpFDSyVYUuEE4",
+    key: process.env.razorpay_keyID,
     amount: data.amount,
     currency: data.currency,
     order_id: data.orderDetails.razorpayOrderId,
