@@ -11,7 +11,6 @@ const Auth = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email)
     try {
         const response = await axios.post('http://localhost:8080/user/authenticate',{email});
         if(response.status=='200'){
@@ -21,7 +20,7 @@ const Auth = () => {
             alert("Invalid email or password")
         }
     } catch (error) {
-        console.log(error)
+      alert(error.response.data.message);
     }
   };
 

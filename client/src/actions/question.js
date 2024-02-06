@@ -7,7 +7,7 @@ export const askQuestion = (questionData, navigate) => async (dispatch) => {
     dispatch(fetchAllQuestions());
     navigate("/");
   } catch (error) {
-    console.log(error);
+    alert(error.response.data.message);
     throw error; // Re-throw the error to handle it in the component
   }
 };
@@ -17,7 +17,7 @@ export const fetchAllQuestions = () => async (disptach) => {
     const { data } = await api.getAllQuestions();
     disptach({ type: "FETCH_ALL_QUESTIONS", payload: data });
   } catch (error) {
-    console.log(error);
+    alert(error.response.data.message);
   }
 };
 
@@ -27,7 +27,7 @@ export const deleteQuestion = (id, navigate) => async (dispatch) => {
     dispatch(fetchAllQuestions());
     navigate("/");
   } catch (error) {
-    console.log(error);
+    alert(error.response.data.message);
   }
 };
 
@@ -36,7 +36,7 @@ export const voteQuestion = (id, value) => async (dispatch) => {
     await api.voteQuestion(id, value);
     dispatch(fetchAllQuestions());
   } catch (error) {
-    console.log(error);
+    alert(error.response.data.message);
   }
 };
 
@@ -52,7 +52,7 @@ export const postAnswer = (answerData) => async (dispatch) => {
     dispatch({ type: "POST_ANSWER", payload: data });
     dispatch(fetchAllQuestions());
   } catch (error) {
-    console.log(error);
+    alert(error.response.data.message);
   }
 };
 
@@ -61,6 +61,6 @@ export const deleteAnswer = (id, answerId, noOfAnswers) => async (dispatch) => {
     await api.deleteAnswer(id, answerId, noOfAnswers);
     dispatch(fetchAllQuestions());
   } catch (error) {
-    console.log(error);
+    alert(error.response.data.message);
   }
 };

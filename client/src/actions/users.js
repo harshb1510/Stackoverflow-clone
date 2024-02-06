@@ -5,7 +5,7 @@ export const fetchAllUsers = () => async (dispatch) => {
     const { data } = await api.getAllUsers();
     dispatch({ type: "FETCH_USERS", payload: data });
   } catch (error) {
-    console.log(error);
+    alert(error.response.data.message);
   }
 };
 export const updateProfile = (id, updateData) => async (dispatch) => {
@@ -13,6 +13,6 @@ export const updateProfile = (id, updateData) => async (dispatch) => {
     const { data } = await api.updateProfile(id, updateData);
     dispatch({ type: "UPDATE_CURRENT_USER", payload: data });
   } catch (error) {
-    console.log(error);
+    alert(error.response.data.message);
   }
 };

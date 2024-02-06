@@ -20,7 +20,7 @@ const Auth = () => {
           window.location.href='';
         }
     } catch (error) {
-        console.log(error)
+      alert(error.response.data.message);
     }
   };
 

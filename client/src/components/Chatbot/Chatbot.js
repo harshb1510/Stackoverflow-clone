@@ -76,7 +76,7 @@ function Chatbot() {
 
       simulateTypingEffect(result.response);
     } catch (error) {
-      console.error(error);
+      alert(error.response.data.message);
     }
   }
 

@@ -10,7 +10,7 @@ export const signup = (authData, navigate) => async (dispatch) => {
     dispatch(fetchAllUsers());
     navigate("/");
   } catch (error) {
-    console.log(error);
+    alert(error.response.data.message);
   }
 };
 
@@ -21,6 +21,6 @@ export const login = (authData, navigate) => async (dispatch) => {
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem("Profile"))));
     navigate("/");
   } catch (error) {
-    console.log(error);
+    alert(error.response.data.message);
   }
 };
