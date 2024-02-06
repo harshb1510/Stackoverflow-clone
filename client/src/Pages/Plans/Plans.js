@@ -3,13 +3,15 @@ import "./Plans.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import * as api from "../../api/index";
+import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 
-const Plans = () => {
+const Plans = ({slideIn,handleSlideIn}) => {
 var id = useSelector((state) => state.currentUserReducer?.result._id);
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
   const reducer = useSelector((state)=>console.log(state))
 const [plan,setPlan] = useState('');
+const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
 
 useEffect(() => {
         const loadRazorpayScript = async () => {
@@ -65,10 +67,24 @@ const initPayment = (data) => {
       const response = await api.order({amount:1000})
       initPayment(response.data);
     }
+    useEffect(() => {
+      const handleResize = () => {
+        setScreenSize({ width: window.innerWidth, height: window.innerHeight });
+      };
+  
+      window.addEventListener("resize", handleResize);
+      handleResize();
+  
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+  
+  
+    
   return (
+    <>
+    <LeftSidebar className='sidebar' slideIn={slideIn} handleSlideIn={handleSlideIn} />
     <div className="con-items ">
       <div className="item item1">
-        <div className="con-img"></div>
         <header>
           <h3>Free</h3>
           <p>
@@ -89,7 +105,7 @@ const initPayment = (data) => {
             Available to all user
           </li>
         </ul>
-        <p>Default</p>
+        <p className="item-list">Default</p>
       </div>
       <div className="item color item2">
         <span className="badge">{plan === 'gold' ? 'Current Plan' : 'Upgrade to Gold'}</span>
@@ -140,6 +156,7 @@ const initPayment = (data) => {
         <button onClick={handleSilverPlan}>Choose Plan</button>
       </div>
     </div>
+    </>
   );
 };
 

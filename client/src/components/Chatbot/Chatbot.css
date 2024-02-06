@@ -14,6 +14,15 @@
     outline: none;
     z-index: 999; /* Set a high z-index to ensure it appears on top of other elements */
   }
+
+  @media (max-width: 768px) {
+    .chatboticon {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      }
+    
+  }
   
   
 /* Chatbot container */
@@ -32,6 +41,25 @@
     box-sizing: border-box;
     z-index: 1;
 }
+
+
+ @media (max-width: 768px) {
+  .chat-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    /* margin: auto; */
+    border: 1px solid #000000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 250px;
+    margin-left: 65px;
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 1;
+} 
+}  
   
   /* Message list */
   .message-list {
