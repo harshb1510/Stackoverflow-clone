@@ -6,11 +6,11 @@ import * as api from "../../api/index";
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 
 const Plans = ({slideIn,handleSlideIn}) => {
-var id = useSelector((state) => state.currentUserReducer?.result._id);
+  var id = useSelector((state) => state.currentUserReducer?.result._id);
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
- const [plan,setPlan] = useState('');
-const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
+  const [plan,setPlan] = useState('');
+  const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
 
 useEffect(() => {
         const loadRazorpayScript = async () => {
@@ -53,18 +53,28 @@ const initPayment = (data) => {
   const rzp1 = new window.Razorpay(options);
   rzp1.open();
 };
-
     const handleSilverPlan = async () => {
+      if(id){
+
         try {
           const response = await api.order({amount:100})
           initPayment(response.data);
         } catch (error) {
-          
+          console.log(error);
         }
+      }else{
+        alert('Please Login to continue')
+        window.location.href = '/auth'
+      }
     }
     const handleGoldPlan = async () => {
-      const response = await api.order({amount:1000})
-      initPayment(response.data);
+      if (id) { 
+        const response = await api.order({amount:1000})
+        initPayment(response.data);
+      }else{
+        alert('Please Login to continue')
+        window.location.href = '/auth'
+      }
     }
     useEffect(() => {
       const handleResize = () => {
