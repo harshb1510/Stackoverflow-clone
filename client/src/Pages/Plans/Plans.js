@@ -53,29 +53,42 @@ const initPayment = (data) => {
   const rzp1 = new window.Razorpay(options);
   rzp1.open();
 };
-    const handleSilverPlan = async () => {
-      if(id){
-
-        try {
-          const response = await api.order({amount:100})
-          initPayment(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      }else{
-        alert('Please Login to continue')
-        window.location.href = '/auth'
-      }
-    }
-    const handleGoldPlan = async () => {
-      if (id) { 
-        const response = await api.order({amount:1000})
+const handleSilverPlan = async () => {
+  if(id){
+    if (currentProfile.plan === 'silver') {
+      alert('You are already subscribed to the Silver plan.');
+    } else {
+      try {
+        const response = await api.order({amount: 100});
         initPayment(response.data);
-      }else{
-        alert('Please Login to continue')
-        window.location.href = '/auth'
+      } catch (error) {
+        console.log(error);
       }
     }
+  } else {
+    alert('Please Login to continue');
+    window.location.href = '/auth';
+  }
+}
+
+const handleGoldPlan = async () => {
+  if (id) { 
+    if (currentProfile.plan === 'gold') {
+      alert('You are already subscribed to the Gold plan.');
+    } else {
+      try {
+        const response = await api.order({amount: 1000});
+        initPayment(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  } else {
+    alert('Please Login to continue');
+    window.location.href = '/auth';
+  }
+}
+
     useEffect(() => {
       const handleResize = () => {
         setScreenSize({ width: window.innerWidth, height: window.innerHeight });
