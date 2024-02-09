@@ -9,8 +9,7 @@ const Plans = ({slideIn,handleSlideIn}) => {
 var id = useSelector((state) => state.currentUserReducer?.result._id);
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
-  const reducer = useSelector((state)=>console.log(state))
-const [plan,setPlan] = useState('');
+ const [plan,setPlan] = useState('');
 const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
 
 useEffect(() => {

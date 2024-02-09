@@ -17,6 +17,7 @@ export async function verifyPayment(req,res){
 }
 
 export async function orders(req,res){
+    console.log(req.body.amount)
     try{
     const razorpay = new Razorpay({
         key_id:process.env.razorpay_key_id,
