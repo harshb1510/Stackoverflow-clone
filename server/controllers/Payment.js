@@ -23,11 +23,13 @@ export async function orders(req,res){
         key_id:process.env.razorpay_key_id,
         key_secret:process.env.razorpay_key_secret,
     }); 
+    console.log(razorpay)
     const order = {
         amount:req.body.amount*100,
         currency:"INR",
         receipt:crypto.randomBytes(10).toString('hex'),
     };
+    console.log(order)
     razorpay.orders.create(order, (error, order) => {
         if (error) {
             console.log(error);
@@ -36,6 +38,7 @@ export async function orders(req,res){
         const orderDetails={
             razorpayOrderId:order.id
         }
+        console.log(orderDetails)
         return res.status(200).json({data:order
         ,orderDetails});
     });

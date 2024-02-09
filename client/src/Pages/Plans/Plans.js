@@ -33,7 +33,7 @@ const initPayment = (data) => {
     order_id: data.orderDetails.razorpayOrderId,
     handler: async (response) => {
       try {
-        const verifyUrl = `http://localhost:8080/user/verify`;
+        const verifyUrl = `https://stackoverflow-clone-gl9m.onrender.com/user/verify`;
 
         const verifyData = {
           razorpay_order_id: response.razorpay_order_id,
@@ -41,7 +41,7 @@ const initPayment = (data) => {
           razorpay_signature: response.razorpay_signature,
         };
         await axios.post(verifyUrl, verifyData);
-        await axios.post(`http://localhost:8080/user/subscribe/${id}`,data);
+        await axios.post(`https://stackoverflow-clone-gl9m.onrender.com/user/subscribe/${id}`,data);
       } catch (err) {
         console.log(err);
       }
