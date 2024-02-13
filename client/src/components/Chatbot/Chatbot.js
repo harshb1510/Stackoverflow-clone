@@ -64,8 +64,8 @@ function Chatbot() {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'X-RapidAPI-Key': '1630028237mshc01ab26c30a86c2p183e4djsnb93eff064633',
-        'X-RapidAPI-Host': 'chatgpt-api8.p.rapidapi.com'
+        'X-RapidAPI-Key': '6e74d89613msh86fa3c489b92837p14acc9jsn56cd0ea4c8bf',
+        'X-RapidAPI-Host': 'chatgpt-gpt4-ai-chatbot.p.rapidapi.com'
       },
       body: JSON.stringify(apiRequestBody),
     };
