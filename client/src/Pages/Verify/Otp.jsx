@@ -14,7 +14,7 @@ const Auth = () => {
     e.preventDefault();
     console.log(otp)
     try {
-        const response = await axios.post('http://localhost:8080/user/verifyOtp',{otp,userId});
+        const response = await axios.post('https://stackoverflow-clone-gl9m.onrender.com/user/verifyOtp',{otp,userId});
         if(response.status=='200'){
           navigate('/')
           window.location.href='';

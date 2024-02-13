@@ -12,7 +12,7 @@ const Auth = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('http://localhost:8080/user/authenticate',{email});
+        const response = await axios.post('https://stackoverflow-clone-gl9m.onrender.com/user/authenticate',{email});
         if(response.status=='200'){
           const id = response.data.id  
             navigate(`/verify/${id}`);
