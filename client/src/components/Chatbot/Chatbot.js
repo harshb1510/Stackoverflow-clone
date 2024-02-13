@@ -62,11 +62,11 @@ function Chatbot() {
     const url = 'https://chatgpt-gpt4-ai-chatbot.p.rapidapi.com/ask';
     const options = {
       method: 'POST',
-	headers: {
-		'content-type': 'application/json',
-		'X-RapidAPI-Key': '1630028237mshc01ab26c30a86c2p183e4djsnb93eff064633',
-		'X-RapidAPI-Host': 'chatgpt-gpt4-ai-chatbot.p.rapidapi.com'
-	},
+      headers: {
+        'content-type': 'application/json',
+        'X-RapidAPI-Key': '1630028237mshc01ab26c30a86c2p183e4djsnb93eff064633',
+        'X-RapidAPI-Host': 'chatgpt-api8.p.rapidapi.com'
+      },
       body: JSON.stringify(apiRequestBody),
     };
 
