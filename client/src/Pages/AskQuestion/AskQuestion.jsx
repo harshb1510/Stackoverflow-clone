@@ -35,7 +35,6 @@ const AskQuestion = () => {
           if (error.response && error.response.status === 403) {
             alert("You have reached the maximum limit of questions for today.");
           } else {
-            console.log(error);
             alert("An error occurred while posting the question");
           }
         }
