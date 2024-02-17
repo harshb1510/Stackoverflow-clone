@@ -13,7 +13,7 @@ export const AskQuestion = async (req, res) => {
    const userSubscriptionPlan = user.plan; 
 
     let allowedNumberOfQuestions;
-    if (userSubscriptionPlan === "free") {
+    if (userSubscriptionPlan === "Free") {
       allowedNumberOfQuestions = 1;
     } else if (userSubscriptionPlan === "silver") {
       allowedNumberOfQuestions = 5;
