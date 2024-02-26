@@ -40,7 +40,7 @@ const initialState = {
         case "clear":
           return "#f1c40f"; // Sunny theme color (e.g., yellow)
         case "clouds":
-          return "#ecf0f1"; // Cloudy theme color (e.g., light gray)
+          return "#A9A9A9"; // Cloudy theme color (e.g., light gray)
         case "rain":
           return "#3498db"; // Rainy theme color (e.g., blue)
         default:
