@@ -15,4 +15,4 @@ const DisplayQuestion = ({ slideIn, handleSlideIn }) => {
   );
 };
 
-export default DisplayQuestion;
+export default DisplayQuestion; 

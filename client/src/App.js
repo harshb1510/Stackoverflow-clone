@@ -21,7 +21,7 @@ function App() {
     dispatch(fetchAllQuestions());
     dispatch(fetchAllUsers());
 
-    navigator.geolocation.getCurrentPosition(async (position) => {
+    navigator.geolocation.getCurrentPosition(async (position) =>  {
       const { latitude, longitude } = position.coords;
       const weatherData = await getWeatherByCoordinates(latitude, longitude);
       await dispatch({ type: "FETCH_WEATHER_SUCCESS", payload: weatherData });

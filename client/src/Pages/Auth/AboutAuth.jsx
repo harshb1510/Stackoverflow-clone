@@ -7,7 +7,7 @@ const AboutAuth = () => {
       <p>Get unstuck — ask a question</p>
       <p>Unlock new privileges like voting and commenting</p>
       <p>Save your favorite tags, filters, and jobs</p>
-      <p>Earn reputation and badges</p>
+      <p>Earn reputation and badges</p> 
       <p style={{ fontSize: "13px", color: "#666767" }}>
         Collaborate and share knowledge with a private group for
       </p>

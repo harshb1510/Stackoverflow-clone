@@ -15,7 +15,7 @@ const Plans = ({slideIn,handleSlideIn}) => {
 useEffect(() => {
         const loadRazorpayScript = async () => {
           const script = document.createElement("script");
-          script.src = "https://checkout.razorpay.com/v1/checkout.js";
+          script.src = "https://checkout.razorpay.com/v1/checkout.js"; 
           script.async = true;
           script.onload = () => {};
           document.body.appendChild(script);
@@ -84,7 +84,7 @@ const handleGoldPlan = async () => {
       }
     }
   } else {
-    alert('Please Login to continue');
+    alert('Please Login to continue'); 
     window.location.href = '/auth';
   }
 }
